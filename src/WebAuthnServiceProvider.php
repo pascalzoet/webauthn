@@ -38,12 +38,12 @@ class WebAuthnServiceProvider extends ServiceProvider
     private function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function (\Illuminate\Routing\Router $router): void {
-            $router->get('auth', 'WebauthnController@login')->name('webauthn.login');
-            $router->post('auth', 'WebauthnController@auth')->name('webauthn.auth');
+            $router->get('auth', 'WebauthController@login')->name('webauthn.login');
+            $router->post('auth', 'WebauthController@auth')->name('webauthn.auth');
 
-            $router->get('register', 'WebauthnController@register')->name('webauthn.register');
-            $router->post('register', 'WebauthnController@create')->name('webauthn.create');
-            $router->delete('{id}', 'WebauthnController@destroy')->name('webauthn.destroy');
+            $router->get('register', 'WebauthController@register')->name('webauthn.register');
+            $router->post('register', 'WebauthController@create')->name('webauthn.create');
+            $router->delete('{id}', 'WebauthController@destroy')->name('webauthn.destroy');
         });
     }
 
@@ -57,7 +57,7 @@ class WebAuthnServiceProvider extends ServiceProvider
         return [
             'middleware' => self::MIDDLEWARE_GROUP,
             'domain' => config('webauthn.domain', null),
-            'namespace' => 'LaravelWebauthn\Http\Controllers',
+            'namespace' => 'Inzicht\Webauthn\Controller',
             'prefix' => config('webauthn.prefix', 'webauthn'),
         ];
     }
