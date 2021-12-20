@@ -1,0 +1,28 @@
+{
+    "name": "inzicht/webauthn",
+    "description": "laravel packages for webauthn authentication",
+    "autoload": {
+        "psr-4": {
+            "Inzicht\\Webauthn\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pascal Zoet",
+            "email": "pascal@panelinzicht.nl"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Inzicht\\Webauthn\\WebauthnServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "web-auth/cose-lib": "v3.3.x-dev",
+        "web-auth/webauthn-lib": "v3.3.x-dev",
+        "web-token/jwt-signature": "dev-master"
+    }
+}
