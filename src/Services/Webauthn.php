@@ -7,6 +7,7 @@ use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Session\Session;
+use Inzicht\Webauthn\Models\WebauthnKey;
 use Inzicht\Webauthn\Services\Webauthn\PublicKeyCredentialCreationOptionsFactory;
 use Inzicht\Webauthn\Services\Webauthn\PublicKeyCredentialRequestOptionsFactory;
 use Inzicht\Webauthn\Services\Webauthn\PublicKeyCredentialValidator;

@@ -5,7 +5,7 @@ namespace Inzicht\Webauthn\Services\Webauthn;
 use Illuminate\Contracts\Auth\Authenticatable as User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use LaravelWebauthn\Models\WebauthnKey;
+use Inzicht\Webauthn\Models\WebauthnKey;
 use Webauthn\AttestedCredentialData;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialSource;
