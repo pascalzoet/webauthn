@@ -1,5 +1,5 @@
 {
-    "name": "inzicht/webauthn",
+    "name": "pascalzoet/webauthn",
     "description": "laravel packages for webauthn authentication",
     "autoload": {
         "psr-4": {
