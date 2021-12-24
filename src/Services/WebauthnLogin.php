@@ -2,7 +2,7 @@
 
 namespace Inzicht\Webauthn\Services;
 
-trait WebauthLogin
+trait WebauthnLogin
 {
    /**
      * PublicKey Creation session name.
