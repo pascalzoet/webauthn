@@ -2,6 +2,17 @@
 
 namespace Inzicht\Webauthn\Services;
 
+use Illuminate\Contracts\Config\Repository as Config;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
+use Inzicht\Webauthn\Facade\Webauthn;
+use Inzicht\Webauthn\Models\WebauthnKey;
+use Webauthn\PublicKeyCredentialCreationOptions;
+use Webauthn\PublicKeyCredentialRequestOptions;
+
 trait WebauthnLogin
 {
    /**
@@ -36,9 +47,9 @@ trait WebauthnLogin
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function wLogin(Request $request, $user)
+    public function wLogin(Request $request)
     {
-        $publicKey = Webauthn::getAuthenticateData($user);
+        $publicKey = Webauthn::getAuthenticateData($request->get('user'));
 
         $request->session()->put(self::$SESSION_PUBLICKEY_REQUEST, $publicKey);
 
@@ -52,7 +63,7 @@ trait WebauthnLogin
      * @param  PublicKeyCredentialRequestOptions  $publicKey
      * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    protected function redirectViewAuth(Request $request, PublicKeyCredentialRequestOptions $publicKey)
+    protected function redirectViewAuth(Request $request, PublicKeyCredentialRequestOptions $publicKey, $id)
     {
         if ($this->config->get('webauthn.authenticate.view', '') !== '') {
             return view($this->config->get('webauthn.authenticate.view'))
