@@ -2,7 +2,6 @@
 
 namespace Inzicht\Webauthn\Services;
 
-
 trait WebauthLogin
 {
    /**
