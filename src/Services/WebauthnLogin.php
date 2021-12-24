@@ -49,7 +49,7 @@ trait WebauthnLogin
      */
     public function wLogin(Request $request)
     {
-        $publicKey = Webauthn::getAuthenticateData($request->get('user'));
+        $publicKey = Webauthn::getAuthenticateData($request->user());
 
         $request->session()->put(self::$SESSION_PUBLICKEY_REQUEST, $publicKey);
 
@@ -63,7 +63,7 @@ trait WebauthnLogin
      * @param  PublicKeyCredentialRequestOptions  $publicKey
      * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    protected function redirectViewAuth(Request $request, PublicKeyCredentialRequestOptions $publicKey, $id)
+    protected function redirectViewAuth(Request $request, PublicKeyCredentialRequestOptions $publicKey)
     {
         if ($this->config->get('webauthn.authenticate.view', '') !== '') {
             return view($this->config->get('webauthn.authenticate.view'))

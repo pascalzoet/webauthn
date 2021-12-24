@@ -138,6 +138,14 @@ class Webauthn extends WebauthnRepository
     }
 
     /**
+     * Force session logout
+     */
+    public function forceLogout()
+    {
+        $this->session->forget($this->config->get('webauthn.sessionName'));
+    }
+
+    /**
      * Check authentication of the user in session.
      *
      * @return bool
