@@ -221,5 +221,5 @@ return [
         */
         'user_verification' => \Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED,
     ],
-
+     'domain' => env('WEBAUTH_DOMAIN', 'https://insights.panelinzicht.nl')
 ];
