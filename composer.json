@@ -1,6 +1,7 @@
 {
     "name": "pascalzoet/webauthn",
     "description": "laravel packages for webauthn authentication",
+    "type": "package",
     "autoload": {
         "psr-4": {
             "Inzicht\\Webauthn\\": "src/"
