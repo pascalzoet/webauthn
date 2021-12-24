@@ -12,13 +12,6 @@
             "email": "pascal@panelinzicht.nl"
         }
     ],
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Inzicht\\Webauthn\\WebauthnServiceProvider"
-            ]
-        }
-    },
     "minimum-stability": "dev",
     "require": {
         "web-auth/cose-lib": "v3.3.x-dev",
