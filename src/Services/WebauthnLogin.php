@@ -10,14 +10,14 @@ trait WebauthLogin
      *
      * @var string
      */
-    private const SESSION_PUBLICKEY_CREATION = 'webauthn.publicKeyCreation';
+    static $SESSION_PUBLICKEY_CREATION = 'webauthn.publicKeyCreation';
 
     /**
      * PublicKey Request session name.
      *
      * @var string
      */
-    private const SESSION_PUBLICKEY_REQUEST = 'webauthn.publicKeyRequest';
+    static $SESSION_PUBLICKEY_REQUEST = 'webauthn.publicKeyRequest';
 
     /**
      * The config repository instance.
@@ -37,11 +37,11 @@ trait WebauthLogin
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function login(Request $request, $user)
+    public function wLogin(Request $request, $user)
     {
         $publicKey = Webauthn::getAuthenticateData($user);
 
-        $request->session()->put(self::SESSION_PUBLICKEY_REQUEST, $publicKey);
+        $request->session()->put(self::$SESSION_PUBLICKEY_REQUEST, $publicKey);
 
         return $this->redirectViewAuth($request, $publicKey);
     }
@@ -74,7 +74,7 @@ trait WebauthLogin
     public function auth(Request $request)
     {
         try {
-            $publicKey = $request->session()->pull(self::SESSION_PUBLICKEY_REQUEST);
+            $publicKey = $request->session()->pull(self::$SESSION_PUBLICKEY_REQUEST);
             if (! $publicKey instanceof PublicKeyCredentialRequestOptions) {
                 throw new ModelNotFoundException(trans('webauthn::errors.auth_data_not_found'));
             }
@@ -135,7 +135,7 @@ trait WebauthLogin
 
         $publicKey = Webauthn::getRegisterData($request->user());
 
-        $request->session()->put(self::SESSION_PUBLICKEY_CREATION, $publicKey);
+        $request->session()->put(self::$SESSION_PUBLICKEY_CREATION, $publicKey);
 
         return $this->redirectViewRegister($request, $publicKey);
     }
@@ -177,7 +177,7 @@ trait WebauthLogin
         }
 
         try {
-            $publicKey = $request->session()->pull(self::SESSION_PUBLICKEY_CREATION);
+            $publicKey = $request->session()->pull(self::$SESSION_PUBLICKEY_CREATION);
             if (! $publicKey instanceof PublicKeyCredentialCreationOptions) {
                 throw new ModelNotFoundException(trans('webauthn::errors.create_data_not_found'));
             }
