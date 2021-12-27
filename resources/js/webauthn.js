@@ -217,4 +217,4 @@ WebAuthn.prototype.setNotify = function(callback) {
   this._notifyCallback = callback;
 }
 
-module.exports = WebAuthn;
+window.WebAuthn = WebAuthn;
