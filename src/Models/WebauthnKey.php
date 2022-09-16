@@ -5,9 +5,9 @@ namespace Inzicht\Webauthn\Models;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use function Safe\base64_decode;
-use function Safe\json_decode;
-use function Safe\json_encode;
+use function base64_decode;
+use function json_decode;
+use function json_encode;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\TrustPath\TrustPath;
 
