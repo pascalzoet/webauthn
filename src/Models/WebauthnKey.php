@@ -131,6 +131,10 @@ class WebauthnKey extends Model
     public function getAaguidAttribute($value)
     {
         if (! is_null($value) && Uuid::isValid($value)) {
+            $version = explode('.', app()->version());
+            if ($version[0] >= (int)9) {
+                return \Symfony\Component\Uid\Uuid::fromString($value);
+            }
             return Uuid::fromString($value);
         }
 
