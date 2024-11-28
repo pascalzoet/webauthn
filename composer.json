@@ -13,7 +13,7 @@
             "email": "pascal@panelinzicht.nl"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "web-auth/cose-lib": "v4.0",
         "web-auth/webauthn-lib": "v4.0",
