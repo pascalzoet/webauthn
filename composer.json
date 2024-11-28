@@ -15,8 +15,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "web-auth/cose-lib": "v4.0",
-        "web-auth/webauthn-lib": "v4.0",
+        "web-auth/cose-lib": "v4.1",
+        "web-auth/webauthn-lib": "v4.1",
         "web-token/jwt-signature": "dev-master"
     }
 }
